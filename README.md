@@ -3,7 +3,7 @@ API nhận diện menu từ ảnh (đồ ăn / thức uống) sử dụng Paddle
 
 ---
 
-## 1. Yêu cầu 
+## 1. Yêu cầu
 - Docker Engine / Docker Desktop
 - Windows / macOS / Linux
 - Trình duyệt hoặc `curl`
@@ -15,58 +15,64 @@ API nhận diện menu từ ảnh (đồ ăn / thức uống) sử dụng Paddle
 ```bash
 gunzip ocr-api_1.1.tar.gz
 docker load -i ocr-api_1.1.tar
-
+```
 
 ---
 
-3. Chạy nhanh (Local)
+## 3. Chạy nhanh (Local)
 
+```bash
 docker run -p 8000:8000 ocr-api:1.1
-
+```
 ---
-4. Chạy local
+## 4. Chạy local
 
-
+```bash
 http://localhost:8000/docs
-
+```
 ---
-5. Kiểm tra API
+## 5. Kiểm tra API
 
-
+```bash
 curl http://localhost:8000/health
-
+```
 ---
-6. Gọi OCR bằng curl
-Menu đồ uống (size + giá)
+## 6. Gọi OCR bằng curl
+## Menu đồ uống (size + giá)
 
-
+```bash
 curl -X POST "http://localhost:8000/ocr" \
   -F "file=@menu.jpg" \
   -F "mode=size_prices" \
   -F "use_gpu_ppocr=false"
+```
+## Menu đồ ăn (tên + giá)
 
-Menu đồ ăn (tên + giá)
-
-
+```bash
 curl -X POST "http://localhost:8000/ocr" \
   -F "file=@menu.jpg" \
   -F "mode=name_price" \
   -F "use_gpu_ppocr=false"
+```
 
-Nếu tên file có khoảng trắng dùng:  -F "file=@/full/path/My Menu Image.png"
+## Nếu tên file có khoảng trắng dùng:  -F "file=@/full/path/My Menu Image.png"
 
 ---
-7. Chạy cache để tránh tải lại model OCR
+## 7. Chạy cache để tránh tải lại model OCR
 
+```bash
 docker run -p 8000:8000 \
   -v ocr_cache:/root/.cache \
   ocr-api:1.1
-
+```
 
 
 
 ---
-Kiến Trúc Tổng quát
+
+## Kiến Trúc Tổng quát
+
+```bash
 Client (curl / browser)
         ↓
 Docker Container
@@ -76,3 +82,4 @@ FastAPI (Uvicorn)
 PaddleOCR + VietOCR
         ↓
 JSON Output
+```
