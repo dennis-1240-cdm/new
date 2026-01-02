@@ -3,7 +3,7 @@ API nhận diện menu từ ảnh (đồ ăn / thức uống) sử dụng Paddle
 
 ---
 
-## 1. Yêu cầu
+## 1. Yêu cầu 
 - Docker Engine / Docker Desktop
 - Windows / macOS / Linux
 - Trình duyệt hoặc `curl`
