@@ -55,8 +55,10 @@ curl -X POST "http://localhost:8000/ocr" \
   -F "use_gpu_ppocr=false"
 ```
 
-## Nếu tên file có khoảng trắng dùng:  -F "file=@/full/path/My Menu Image.png"
-
+## Nếu tên file có khoảng trắng dùng:  
+```bash
+-F "file=@/full/path/My Menu Image.png"
+```
 ---
 ## 7. Chạy cache để tránh tải lại model OCR
 
