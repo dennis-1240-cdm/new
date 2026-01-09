@@ -105,6 +105,70 @@ require_three_prices
 
 ---
 
+
+## JSON logic mẫu - menu nhiều giá S/M/L
+```bash
+{
+  "ppocr_lang": "vi",
+  "use_angle_cls": true,
+  "use_gpu_ppocr": false,
+  "enable_vietocr": true,
+  "vietocr_device": "cpu",
+  "vietocr_conf_threshold": 0.99,
+  "enable_generic_filter": true,
+  "mode": "size_prices",
+  "s_column_index": 2,
+  "require_three_prices": false,
+  "max_columns": 5,
+  "debug": false
+}
+```
+---
+## JSON logic mẫu - menu một giá
+```bash
+{
+  "ppocr_lang": "vi",
+  "use_angle_cls": true,
+  "use_gpu_ppocr": false,
+  "enable_vietocr": true,
+  "vietocr_device": "cpu",
+  "vietocr_conf_threshold": 0.99,
+  "enable_generic_filter": true,
+  "mode": "name_price",
+  "s_column_index": 2,
+  "require_three_prices": false,
+  "max_columns": 5,
+  "debug": false
+}
+```
+---
+
+## curl mẫu gọi ocr menu nhiều giá 
+```bash
+curl -X POST "http://<SERVER_IP>:1510/ocr" \
+  -H "X-API-Key: OCR_MENU" \
+  -F "file=@menu.jpg" \
+  -F "ppocr_lang=vi" \
+  -F "use_angle_cls=true" \
+  -F "enable_vietocr=true" \
+  -F "vietocr_conf_threshold=0.99" \
+  -F "mode=size_prices"
+```
+
+---
+
+## curl mẫu gọi ocr menu một giá 
+```bash
+curl -X POST "http://<SERVER_IP>:1510/ocr" \
+  -H "X-API-Key: OCR_MENU" \
+  -F "file=@menu.jpg" \
+  -F "ppocr_lang=vi" \
+  -F "use_angle_cls=true" \
+  -F "enable_vietocr=true" \
+  -F "vietocr_conf_threshold=0.99" \
+  -F "mode=name_price"
+```
+
 ## Kiến Trúc Tổng quát
 
 ```bash
